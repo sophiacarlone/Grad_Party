@@ -1,5 +1,8 @@
 #Sophia Carlone
 
+from tkinter import *
+from tkinter import ttk
+
 arrived = []
 graduated = ["Alina", "Amanda", "Amelia", "Andrea", "Ceilidh", "Dinh", "Favour", "Katie", "Lee", "Sam", "Trevor"]
 
@@ -31,15 +34,24 @@ def PrintGuests():
     for x in arrived:
         print(x)
 
-while(1):
-    print("Welcome! Please enter your name!")
-    guest = input()
-    arrived.append(guest)
-    len(graduated)
-    # FindGraduated(guest)
-    if FindGraduated(guest, 0, len(graduated)-1):
-        print("You graduated too! Congrats!")
-    print("Do you want to see all the guests that have arrived? (Y/N)")
-    answer = input()
-    if answer == "Y":
-        PrintGuests()
+root = Tk()
+width = root.winfo_screenwidth()
+height = root.winfo_screenheight()
+root.title("Grad Party")
+root.config(bg="skyblue")
+root.geometry("%dx%d" % (width, height))
+label = Label(root, text="Grad Party")
+
+root.mainloop()
+
+print("Welcome! Please enter your name!")
+guest = input()
+arrived.append(guest)
+len(graduated)
+# FindGraduated(guest)
+if FindGraduated(guest, 0, len(graduated)-1):
+    print("You graduated too! Congrats!")
+print("Do you want to see all the guests that have arrived? (Y/N)")
+answer = input()
+if answer == "Y":
+    PrintGuests()
