@@ -1,10 +1,15 @@
 #Sophia Carlone
 
+##IMPORTS
 from tkinter import *
 from tkinter import ttk
 
-arrived = []
+##GLOBALS
+arrived = ["Alina", "Amanda", "Amelia", "Andrea", "Ceilidh", "Dinh", "Favour", "Katie", "Lee", "Sam", "Trevor"]
 graduated = ["Alina", "Amanda", "Amelia", "Andrea", "Ceilidh", "Dinh", "Favour", "Katie", "Lee", "Sam", "Trevor"]
+
+
+##FUNCTIONS
 
 # def FindGraduated(guest):
 #     for x in graduated:
@@ -36,9 +41,16 @@ def PrintGuests():
 
 
 def AddGuest():
+    # print(guest.get())
+    arrived.append(guest.get())
+    # textBox.delete(0, END)
+    # guest_list.insert(END,textBox.get())
+    print(arrived)
+    #TODO add the extra for graduation
 
 
-
+##MAIN
+#root
 root = Tk()
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
@@ -46,11 +58,38 @@ root.title("Grad Party")
 root.config(bg="skyblue")
 root.geometry("%dx%d" % (width, height))
 label = Label(root, text="Grad Party")
+#root variables
+guest = StringVar()
+#text
 welcome = Label(root, text="WELCOME")
 welcome.config(bg="skyblue", font=('Arial', 50), pady=10)
 welcome.pack()
-enter_button = Button(root, text="Enter", command=AddGuest())
+#entry box
+textBox = Entry(root, textvariable=guest)
+textBox.pack()
+#enter guest button
+enter_button = Button(root, text="Enter", command=AddGuest)
+enter_button.config(guest.set(""))
 enter_button.pack()
+#bottom Buttons
+# extras = Frame(root, bg="skyblue")
+# extras.columnconfigure(0, weight=1)
+# extras.columnconfigure(0, weight=1)
+# currentGuests = Button(extras, text="Who's Here?").grid(column=0, row=0)
+# FAQs = Button(extras, text="FAQs").grid(column=1, row=0)
+# extras.pack(side=BOTTOM)
+
+
+# #guest frame
+# scrollbar = Scrollbar(root)
+# scrollbar.pack(side=RIGHT, fill=Y)
+# guest_list=Listbox(root, yscrollcommand=scrollbar.set)
+# for name in arrived:
+#     guest_list.insert(END, name)
+# guest_list.pack(side=BOTTOM, fill=BOTH)
+# scrollbar.config(command=guest_list.yview)
+# # guest_frame = Frame(root, width=width, height= 400, bg="white", bd=50)
+# # guest_frame.pack(side="bottom", padx = 20, pady=20)
 
 root.mainloop()
 
