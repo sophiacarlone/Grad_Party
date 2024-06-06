@@ -34,6 +34,11 @@ def PrintGuests():
     for x in arrived:
         print(x)
 
+
+def AddGuest():
+
+
+
 root = Tk()
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
@@ -41,17 +46,24 @@ root.title("Grad Party")
 root.config(bg="skyblue")
 root.geometry("%dx%d" % (width, height))
 label = Label(root, text="Grad Party")
+welcome = Label(root, text="WELCOME")
+welcome.config(bg="skyblue", font=('Arial', 50), pady=10)
+welcome.pack()
+enter_button = Button(root, text="Enter", command=AddGuest())
+enter_button.pack()
 
 root.mainloop()
 
-print("Welcome! Please enter your name!")
-guest = input()
-arrived.append(guest)
-len(graduated)
-# FindGraduated(guest)
-if FindGraduated(guest, 0, len(graduated)-1):
-    print("You graduated too! Congrats!")
-print("Do you want to see all the guests that have arrived? (Y/N)")
-answer = input()
-if answer == "Y":
-    PrintGuests()
+    
+
+# print("Welcome! Please enter your name!")
+# guest = input()
+# arrived.append(guest)
+# len(graduated)
+# # FindGraduated(guest)
+# if FindGraduated(guest, 0, len(graduated)-1):
+#     print("You graduated too! Congrats!")
+# print("Do you want to see all the guests that have arrived? (Y/N)")
+# answer = input()
+# if answer == "Y":
+#     PrintGuests()
