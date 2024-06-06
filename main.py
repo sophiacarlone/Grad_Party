@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import ttk
 
 ##GLOBALS
-arrived = ["Alina", "Amanda", "Amelia", "Andrea", "Ceilidh", "Dinh", "Favour", "Katie", "Lee", "Sam", "Trevor"]
+arrived = []
 graduated = ["Alina", "Amanda", "Amelia", "Andrea", "Ceilidh", "Dinh", "Favour", "Katie", "Lee", "Sam", "Trevor"]
 
 
@@ -41,12 +41,38 @@ def PrintGuests():
 
 
 def AddGuest():
-    # print(guest.get())
     arrived.append(guest.get())
-    # textBox.delete(0, END)
-    # guest_list.insert(END,textBox.get())
-    print(arrived)
-    #TODO add the extra for graduation
+    if FindGraduated(guest.get(), 0 , len(graduated)-1):
+        CongratsWindow()
+    textBox.delete(0, END)
+
+    
+def FAQsWindow():
+    FAQ_Window = Toplevel(root)
+    FAQ_Window.title("FAQs")
+    FAQ_Window.geometry("500x500")
+
+
+def CongratsWindow():
+    Congrats_Window = Toplevel(root)
+    Congrats_Window.title("Congrats!")
+    Congrats_Window.geometry("500x500")
+    l = Label(Congrats_Window, text="Great Job!")
+    l.pack()
+
+
+def PeopleArrivedWindow():
+    People_Window = Toplevel(root)
+    People_Window.title("Arrived List")
+    People_Window.geometry("200x200")
+    #guest frame
+    scrollbar = Scrollbar(People_Window)
+    scrollbar.pack(side=RIGHT, fill=Y)
+    guest_list=Listbox(People_Window, yscrollcommand=scrollbar.set)
+    for name in arrived:
+        guest_list.insert(END, name)
+    guest_list.pack(fill=BOTH)
+    scrollbar.config(command=guest_list.yview)
 
 
 ##MAIN
@@ -72,37 +98,11 @@ enter_button = Button(root, text="Enter", command=AddGuest)
 enter_button.config(guest.set(""))
 enter_button.pack()
 #bottom Buttons
-# extras = Frame(root, bg="skyblue")
-# extras.columnconfigure(0, weight=1)
-# extras.columnconfigure(0, weight=1)
-# currentGuests = Button(extras, text="Who's Here?").grid(column=0, row=0)
-# FAQs = Button(extras, text="FAQs").grid(column=1, row=0)
-# extras.pack(side=BOTTOM)
-
-
-# #guest frame
-# scrollbar = Scrollbar(root)
-# scrollbar.pack(side=RIGHT, fill=Y)
-# guest_list=Listbox(root, yscrollcommand=scrollbar.set)
-# for name in arrived:
-#     guest_list.insert(END, name)
-# guest_list.pack(side=BOTTOM, fill=BOTH)
-# scrollbar.config(command=guest_list.yview)
-# # guest_frame = Frame(root, width=width, height= 400, bg="white", bd=50)
-# # guest_frame.pack(side="bottom", padx = 20, pady=20)
+extras = Frame(root, bg="skyblue")
+extras.columnconfigure(0, weight=1)
+extras.columnconfigure(0, weight=1)
+currentGuests = Button(extras, text="Who's Here?", command=PeopleArrivedWindow).grid(column=0, row=0)
+FAQs = Button(extras, text="FAQs", command=FAQsWindow).grid(column=1, row=0)
+extras.pack(side=BOTTOM)
 
 root.mainloop()
-
-    
-
-# print("Welcome! Please enter your name!")
-# guest = input()
-# arrived.append(guest)
-# len(graduated)
-# # FindGraduated(guest)
-# if FindGraduated(guest, 0, len(graduated)-1):
-#     print("You graduated too! Congrats!")
-# print("Do you want to see all the guests that have arrived? (Y/N)")
-# answer = input()
-# if answer == "Y":
-#     PrintGuests()
