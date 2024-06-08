@@ -3,6 +3,7 @@
 ##IMPORTS
 from tkinter import *
 from tkinter import ttk
+from PIL import ImageTk, Image
 
 ##GLOBALS
 arrived = []
@@ -52,7 +53,13 @@ def AddGuest():
 def FAQsWindow():
     FAQ_Window = Toplevel(root)
     FAQ_Window.title("FAQs")
-    FAQ_Window.geometry("500x500")
+    FAQ_Window.geometry("1000x1000")
+    FAQ_Window.config(bg = "DeepSkyBlue")
+    l = Label(FAQ_Window, text="FAQs", font="TimesNewRoman, 30", bg="DeepSkyBlue")
+    l.pack()
+    t = Text(FAQ_Window, height=10)
+    t.pack()
+    t.insert('1.0', "Do you have a boyfriend?")
 
 
 def CongratsWindow():
@@ -66,7 +73,7 @@ def CongratsWindow():
 def PeopleArrivedWindow():
     People_Window = Toplevel(root)
     People_Window.title("Arrived List")
-    People_Window.geometry("200x200")
+    People_Window.geometry("500x200")
     #guest frame
     scrollbar = Scrollbar(People_Window)
     scrollbar.pack(side=RIGHT, fill=Y)
@@ -85,28 +92,37 @@ root = Tk()
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
 root.title("Grad Party")
-root.config(bg="skyblue")
+root.config(bg="DodgerBlue")
 root.geometry("%dx%d" % (width, height))
 label = Label(root, text="Grad Party")
 #root variables
 guest = StringVar()
 #text
-welcome = Label(root, text="WELCOME")
-welcome.config(bg="skyblue", font=('Arial', 50), pady=10)
+welcome = Label(root, text="Welcome to the party!!")
+welcome.config(bg="DodgerBlue", font=('OpenSans', 50), foreground="MediumSpringGreen", pady=60)
 welcome.pack()
 #entry box
+ask = Label(root, text="Please enter your name below")
+ask.config(bg="DodgerBlue", font=('OpenSans', 20), foreground="Black", pady=10)
+ask.pack()
 textBox = Entry(root, textvariable=guest)
+textBox.config(font=("arial", 30))
 textBox.pack()
 #enter guest button
-enter_button = Button(root, text="Enter", command=AddGuest)
-enter_button.config(guest.set(""))
+enter_button = Button(root, text="Enter", command=AddGuest, pady=20)
+enter_button.config(guest.set(""), font=("arial", 20), pady=10, activebackground="MediumSpringGreen")
 enter_button.pack()
+# #image
+# img = Image.open("grad.jpg")
+# img.resize((20, 30))
+# imgimg=ImageTk.PhotoImage(img)
+# imgL = Label(root, image=imgimg).pack()
 #bottom Buttons
-extras = Frame(root, bg="skyblue")
+extras = Frame(root, bg="DodgerBlue")
 extras.columnconfigure(0, weight=1)
 extras.columnconfigure(0, weight=1)
-currentGuests = Button(extras, text="Who's Here?", command=PeopleArrivedWindow).grid(column=0, row=0)
-FAQs = Button(extras, text="FAQs", command=FAQsWindow).grid(column=1, row=0)
+currentGuests = Button(extras, text="Who's Here?", command=PeopleArrivedWindow, font=("arial, 30"), padx=10, activebackground="MediumSpringGreen").grid(column=0, row=0)
+FAQs = Button(extras, text="FAQs", command=FAQsWindow, font=("arial, 30"), padx=10, activebackground="MediumSpringGreen").grid(column=1, row=0)
 extras.pack(side=BOTTOM)
 
 root.mainloop()
