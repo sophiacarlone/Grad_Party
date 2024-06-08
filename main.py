@@ -44,6 +44,8 @@ def AddGuest():
     arrived.append(guest.get())
     if FindGraduated(guest.get(), 0 , len(graduated)-1):
         CongratsWindow()
+    f.write(guest.get())
+    f.write("\n")
     textBox.delete(0, END)
 
     
@@ -76,6 +78,8 @@ def PeopleArrivedWindow():
 
 
 ##MAIN
+f = open("guests.txt", "a")
+
 #root
 root = Tk()
 width = root.winfo_screenwidth()
@@ -106,3 +110,5 @@ FAQs = Button(extras, text="FAQs", command=FAQsWindow).grid(column=1, row=0)
 extras.pack(side=BOTTOM)
 
 root.mainloop()
+
+f.close()
