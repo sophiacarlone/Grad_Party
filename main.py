@@ -7,7 +7,7 @@ from PIL import ImageTk, Image
 
 ##GLOBALS
 arrived = []
-graduated = ["Alina", "Amanda", "Amelia", "Andrea", "Ceilidh", "Dinh", "Favour", "Katie", "Lee", "Sam", "Trevor"]
+graduated = [] #add here
 
 
 ##FUNCTIONS
@@ -59,14 +59,14 @@ def FAQsWindow():
     l.pack()
     t = Text(FAQ_Window, height=10)
     t.pack()
-    t.insert('1.0', "Do you have a boyfriend?")
 
 
 def CongratsWindow():
     Congrats_Window = Toplevel(root)
     Congrats_Window.title("Congrats!")
-    Congrats_Window.geometry("500x500")
-    l = Label(Congrats_Window, text="Great Job!")
+    Congrats_Window.geometry("1000x1000")
+    Congrats_Window.config(bg = "Yellow")
+    l = Label(Congrats_Window, text="Great Job! You graduated!", font="arial, 30", bg="Yellow")
     l.pack()
 
 
